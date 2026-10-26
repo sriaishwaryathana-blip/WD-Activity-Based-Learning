@@ -1,0 +1,678 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sweet Bites | Bakery & Cake Shop</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #fff8f3;
+    color: #382019;
+}
+
+/* Navigation */
+header {
+    background: #fffaf6;
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    box-shadow: 0 3px 10px #0001;
+}
+
+.logo {
+    font-size: 26px;
+    color: #b92849;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+nav a {
+    color: #382019;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+nav a:hover {
+    color: #c12f50;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 55px 8%;
+    background: linear-gradient(120deg, #ffe8d9, #f7c7c7);
+}
+
+.hero-text {
+    flex: 1;
+}
+
+.hero-text small {
+    color: #a51f40;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.hero h1 {
+    font-size: 52px;
+    margin: 18px 0;
+    line-height: 1.15;
+}
+
+.hero p {
+    line-height: 1.8;
+    margin-bottom: 24px;
+}
+
+.hero img {
+    width: 48%;
+    height: 340px;
+    object-fit: cover;
+    border-radius: 18px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 13px 25px;
+    background: #b92849;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+}
+
+.btn:hover {
+    background: #8d1834;
+}
+
+/* Categories */
+.categories {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    padding: 30px 6%;
+}
+
+.category {
+    background: white;
+    padding: 24px 10px;
+    text-align: center;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px #0001;
+    font-weight: bold;
+    text-decoration: none;
+    color: #592a25;
+}
+
+.category:hover {
+    background: #ffe2e5;
+}
+
+/* Common Sections */
+.section {
+    padding: 35px 6%;
+    text-align: center;
+}
+
+.section h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #806b64;
+    margin-bottom: 25px;
+}
+
+/* Products */
+.products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+    margin-top: 25px;
+}
+
+.card {
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px #0001;
+    text-align: left;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+.card-info {
+    padding: 18px;
+}
+
+.card-info h3 {
+    margin-bottom: 8px;
+}
+
+.card-info p {
+    color: #806b64;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.price {
+    display: block;
+    font-size: 22px;
+    color: #b92849;
+    margin: 10px 0;
+}
+
+/* Seasonal Offer */
+.offer {
+    margin: 25px 6%;
+    padding: 45px 20px;
+    border-radius: 18px;
+    background: linear-gradient(120deg, #ffd1d7, #ffe9d9);
+    text-align: center;
+}
+
+.offer h2 {
+    font-size: 36px;
+    color: #a51f40;
+    margin: 12px 0;
+}
+
+.offer p {
+    line-height: 1.8;
+    margin-bottom: 18px;
+}
+
+.discount {
+    display: inline-block;
+    padding: 10px 18px;
+    background: #b92849;
+    color: white;
+    border-radius: 25px;
+    font-weight: bold;
+}
+
+/* Custom Cake Designs */
+.custom {
+    padding: 40px 6%;
+    margin: 25px 6%;
+    background: #fff0e8;
+    border-radius: 18px;
+    text-align: center;
+}
+
+.custom h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.custom-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 28px 0;
+}
+
+.custom-grid img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.custom-grid h3 {
+    margin-top: 12px;
+}
+
+/* Gallery */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 190px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: 0.3s;
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.04);
+}
+
+/* Contact */
+.contact {
+    background: #fff0e8;
+    padding: 40px 6%;
+    text-align: center;
+}
+
+.contact h2 {
+    font-size: 32px;
+    margin-bottom: 18px;
+}
+
+.contact p {
+    margin: 12px 0;
+}
+
+/* Footer */
+footer {
+    background: #321d18;
+    color: #fff8f3;
+    padding: 35px 6% 15px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+footer h3 {
+    margin-bottom: 12px;
+}
+
+footer p {
+    margin: 8px 0;
+}
+
+footer a {
+    color: #fff8f3;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #ffb6c1;
+}
+
+.copyright {
+    text-align: center;
+    border-top: 1px solid #765b51;
+    margin-top: 25px;
+    padding-top: 18px;
+    font-size: 13px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        justify-content: center;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .hero img {
+        width: 100%;
+        height: 280px;
+    }
+
+    .categories {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .custom-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .products,
+    .custom-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 34px;
+    }
+
+    .section h2,
+    .custom h2,
+    .contact h2 {
+        font-size: 26px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- Navigation -->
+<header>
+    <div class="logo">🧁 Sweet Bites</div>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#cakes">Cakes</a>
+        <a href="#pastries">Pastries</a>
+        <a href="#cookies">Cookies</a>
+        <a href="#custom">Custom Cakes</a>
+        <a href="#offers">Offers</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+    <div class="hero-text">
+        <small>WELCOME TO SWEET BITES</small>
+        <h1>Life is Better<br>with Cake ♡</h1>
+        <p>
+            Freshly baked cakes, pastries, cookies and more.<br>
+            Made with love, just for you!
+        </p>
+        <a href="#cakes" class="btn">Explore Our Menu →</a>
+    </div>
+
+    <img
+        src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=900&q=85"
+        alt="Chocolate celebration cake">
+</section>
+
+<!-- Categories -->
+<div class="categories">
+    <a href="#cakes" class="category">🎂 Cakes</a>
+    <a href="#pastries" class="category">🥐 Pastries</a>
+    <a href="#cookies" class="category">🍪 Cookies</a>
+    <a href="#custom" class="category">🎉 Custom Cakes</a>
+</div>
+
+<!-- Cakes -->
+<section class="section" id="cakes">
+    <h2>🎂 Cakes</h2>
+    <p class="subtitle">Celebrate every moment with sweetness!</p>
+
+    <div class="products">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=500&q=80" alt="Chocolate cake">
+            <div class="card-info">
+                <h3>Chocolate Truffle Cake</h3>
+                <p>Rich chocolate and creamy frosting.</p>
+                <span class="price">₹499</span>
+                <a href="#contact" class="btn">Order Now</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFMQM_dvU8IgHc8kwmQKnhgYOpyTi5G5X_6GkUce_nzA&s=10>
+            <div class="card-info">
+                <h3>Red Velvet Cake</h3>
+                <p>Soft cake with delicious cream.</p>
+                <span class="price">₹549</span>
+                <a href="#contact" class="btn">Order Now</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1533134242443-d4fd215305ad?auto=format&fit=crop&w=500&q=80" alt="Cheesecake">
+            <div class="card-info">
+                <h3>Blueberry Cheesecake</h3>
+                <p>Creamy cheesecake with berries.</p>
+                <span class="price">₹499</span>
+                <a href="#contact" class="btn">Order Now</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pastries -->
+<section class="section" id="pastries">
+    <h2>Yummy Pastries</h2>
+    <p class="subtitle">Fresh from our oven!</p>
+
+    <div class="products">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=500&q=80" alt="Croissant">
+            <div class="card-info">
+                <h3>Butter Croissant</h3>
+                <p>Golden, flaky and buttery.</p>
+                <span class="price">₹149</span>
+                <a href="#contact" class="btn">Order Now</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqMB4L2bSRudbVzaMJWcgfqqK12WKQ9mf_9FxNGZEGDA&s=10>
+            <div class="card-info">
+                <h3>Strawberry Pastry</h3>
+                <p>Sweet, fruity and creamy.</p>
+                <span class="price">₹129</span>
+                <a href="#contact" class="btn">Order Now</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAKz_gTVj-d0In8Z8s-cBh1BA6tJCsqYuJMBDcQmgBpA&s=10>
+            <div class="card-info">
+                <h3>Vanilla Delight</h3>
+                <p>Soft vanilla-flavoured treat.</p>
+                <span class="price">₹99</span>
+                <a href="#contact" class="btn">Order Now</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Cookies -->
+<section class="section" id="cookies">
+    <h2>🍪Fresh Cookies</h2>
+    <p class="subtitle">Little treats, big happiness!</p>
+
+    <div class="products">
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=500&q=80" alt="Chocolate chip cookies">
+            <div class="card-info">
+                <h3>Chocolate Chip Cookies</h3>
+                <p>Crunchy cookies with chocolate.</p>
+                <span class="price">₹89</span>
+                <a href="#contact" class="btn">Order Now</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQifr5LDqgSU5rDrLiFumrXd-tSmqfnZ49lZB3h9EJhPQ&s=10>
+            <div class="card-info">
+                <h3>Butter Cookies</h3>
+                <p>Classic buttery homemade cookies.</p>
+                <span class="price">₹79</span>
+                <a href="#contact" class="btn">Order Now</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src=https://www.honeywhatscooking.com/wp-content/uploads/2025/03/Dubai-Chocolate-Energy-Bites.jpg>
+            <div class="card-info">
+                <h3>Choco Bites</h3>
+                <p>Chocolate treats for every occasion.</p>
+                <span class="price">₹99</span>
+                <a href="#contact" class="btn">Order Now</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--MUST TRY -->
+<section class="section" id="MUST TRY">
+    <h2> STAR ITEMS</h2>
+    <p class="subtitle">Yummy to eat!</p>
+
+    <div class="products">
+        <div class="card">
+            <img src=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtNegcbsl4ZmHvML5XLHaTGlmXtaqh2JEHklNc4P8n4g&s=10>
+            <div class="card-info">
+                <h3>browine</h3>
+                <p>fuzzie browine.</p>
+                <span class="price">₹49</span>
+                <a href="#contact" class="btn">Order Now</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6_NYP3QXsi4FHIh6qZnQfKjNaiqFia1IeOEJehAa5kg&s=10>
+            <div class="card-info">
+                <h3>sizziling browine with ice cream</h3>
+                <p>creamy browine with hot chocolate and chilled ice cream.</p>
+                <span class="price">₹129</span>
+                <a href="#contact" class="btn">Order Now</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src=https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToZwVYewtQ3oV-qIAAdqfETDEW-Wc_2qTKSv8i39KXqA&s=10>
+            <div class="card-info">
+                <h3>magnum cake</h3>
+                <p>Soft cake with three floured chocolate</p>
+                <span class="price">₹300</span>
+                <a href="#contact" class="btn">Order Now</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Seasonal Offer -->
+<section class="offer" id="offers">
+    <span class="discount">LIMITED TIME OFFER</span>
+    <h2>Seasonal Sweet Offer!</h2>
+    <p>Get 20% OFF on selected cakes and pastries.</p>
+    <p>Make your celebrations extra special with Sweet Bites!</p>
+    <a href="#cakes" class="btn">Explore Products →</a>
+</section>
+
+<!-- Custom Cakes -->
+<section class="custom" id="custom">
+    <h2>🎂 Custom Cake</h2>
+    <p>Your dream cake, our passion!</p>
+    <p>Choose a special design for your memorable occasions.</p>
+
+    <div class="custom-grid">
+        <div>
+            <img src="https://images.unsplash.com/photo-1558636508-e0db3814bd1d?auto=format&fit=crop&w=500&q=80" alt="Birthday cake">
+            <h3>Birthday Cakes</h3>
+        </div>
+
+        <div>
+            <img src="https://images.unsplash.com/photo-1535254973040-607b474cb50d?auto=format&fit=crop&w=500&q=80" alt="Wedding cake">
+            <h3>Wedding Cakes</h3>
+        </div>
+
+        <div>
+            <img src="https://images.unsplash.com/photo-1557979619-445218f326b9?auto=format&fit=crop&w=500&q=80" alt="Theme cake">
+            <h3>Theme Cakes</h3>
+        </div>
+    </div>
+
+    <a href="#contact" class="btn">Enquire About Custom Cakes</a>
+</section>
+
+<!-- Gallery -->
+<section class="section">
+    <h2>📸 Our Gallery</h2>
+    <p class="subtitle">A glimpse of our delicious creations.</p>
+
+    <div class="gallery-grid">
+        <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=400&q=80" alt="Chocolate cake">
+        <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=400&q=80" alt="Sweet dessert">
+        <img src="https://images.unsplash.com/photo-1499636136210-6f4ee915583e?auto=format&fit=crop&w=400&q=80" alt="Cookies">
+        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=400&q=80" alt="Croissants">
+    </div>
+</section>
+
+<!-- Contact -->
+<section class="contact" id="contact">
+    <h2>Contact Our Bakery</h2>
+    <p>Have a sweet idea? We'd love to hear from you!</p>
+    <p>📍 Address: gudivada, krishna district, andhra pradesh, India</p>
+    <p>📞 Phone: +91 98765 43210</p>
+    <p>✉️ Email: hello@sweetbites.in</p>
+    <p>🕒 Opening Hours: 9:00 AM – 9:00 PM</p>
+    <a href="mailto:hello@sweetbites.in" class="btn">Email Us</a>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-content">
+        <div>
+            <h2>🧁 Sweet Bites</h2>
+            <p>Freshly baked, always loved.</p>
+        </div>
+
+        <div>
+            <h3>Quick Links</h3>
+            <p><a href="#home">Home</a></p>
+            <p><a href="#cakes">Cakes</a></p>
+            <p><a href="#pastries">Pastries</a></p>
+            <p><a href="#cookies">Cookies</a></p>
+        </div>
+
+        <div>
+            <h3>Follow Us</h3>
+            <p>Instagram | Facebook | YouTube</p>
+            <p>Thank you for visiting Sweet Bites!</p>
+        </div>
+    </div>
+
+    <p class="copyright">
+        © 2026 Sweet Bites Bakery & Cake Shop. All rights reserved.
+    </p>
+</footer>
+
+</body>
+</html>

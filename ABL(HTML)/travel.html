@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WanderWorld Travel Agency</title>
+
+    <style>
+        /* ---------- BASIC STYLING ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f5f9fc;
+            color: #333;
+        }
+
+        /* ---------- NAVIGATION ---------- */
+        header {
+            background-color: #0b5d7a;
+            color: white;
+            padding: 15px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 16px;
+        }
+
+        nav a:hover {
+            color: #ffd166;
+        }
+
+        /* ---------- HERO SECTION ---------- */
+        .hero {
+            height: 500px;
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.45)),
+                url("https://images.unsplash.com/photo-1500534623283-312aade485b7");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .hero-content p {
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #ff9f1c;
+            color: white;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background-color: #e88c00;
+        }
+
+        /* ---------- GENERAL SECTION ---------- */
+        section {
+            padding: 60px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            color: #0b5d7a;
+            margin-bottom: 10px;
+        }
+
+        /* ---------- DESTINATION CARDS ---------- */
+        .destination-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .destination-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+            transition: 0.3s;
+        }
+
+        .destination-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .destination-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-content h3 {
+            color: #0b5d7a;
+            margin-bottom: 8px;
+        }
+
+        .card-content p {
+            margin-bottom: 8px;
+        }
+
+        /* ---------- PACKAGE SECTION ---------- */
+        .package-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .package-card {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .package-card h3 {
+            color: #0b5d7a;
+            font-size: 23px;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 25px;
+            font-weight: bold;
+            color: #ff7b00;
+            margin: 15px 0;
+        }
+
+        .package-card ul {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .package-card li {
+            padding: 6px;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* ---------- ITINERARY ---------- */
+        .itinerary {
+            background-color: #eaf6fa;
+        }
+
+        .itinerary-container {
+            max-width: 900px;
+            margin: auto;
+        }
+
+        .day {
+            background-color: white;
+            margin-bottom: 15px;
+            padding: 18px;
+            border-left: 5px solid #0b5d7a;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+        }
+
+        .day h3 {
+            color: #0b5d7a;
+            margin-bottom: 5px;
+        }
+
+        /* ---------- INQUIRY FORM ---------- */
+        .form-container {
+            max-width: 700px;
+            margin: auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 13px;
+            background-color: #0b5d7a;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .submit-btn:hover {
+            background-color: #08465c;
+        }
+
+        /* ---------- FOOTER ---------- */
+        footer {
+            background-color: #083b4d;
+            color: white;
+            text-align: center;
+            padding: 25px;
+        }
+
+        footer p {
+            margin: 5px;
+        }
+
+        /* ---------- RESPONSIVE DESIGN ---------- */
+        @media (max-width: 900px) {
+
+            .destination-container,
+            .package-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-content h1 {
+                font-size: 40px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            header {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav a {
+                margin: 5px;
+                font-size: 14px;
+            }
+
+            .hero {
+                height: 400px;
+            }
+
+            .hero-content h1 {
+                font-size: 32px;
+            }
+
+            .hero-content p {
+                font-size: 16px;
+            }
+
+            .destination-container,
+            .package-container {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 40px 5%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ---------- NAVIGATION BAR ---------- -->
+    <header>
+
+        <div class="logo">
+            🌍 WanderWorld
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#destinations">Destinations</a>
+            <a href="#packages">Packages</a>
+            <a href="#itinerary">Itinerary</a>
+            <a href="#inquiry">Inquiry</a>
+        </nav>
+
+    </header>
+
+
+    <!-- ---------- HERO SECTION ---------- -->
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <h1>Explore The World</h1>
+
+            <p>
+                Discover beautiful destinations and unforgettable journeys.
+            </p>
+
+            <a href="#packages" class="btn">
+                Explore Packages
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ---------- DESTINATIONS ---------- -->
+    <section id="destinations">
+
+        <div class="section-title">
+
+            <h2>Popular Destinations</h2>
+
+            <p>
+                Explore some of the most beautiful travel destinations.
+            </p>
+
+        </div>
+
+
+        <div class="destination-container">
+
+            <!-- DESTINATION 1 -->
+            <div class="destination-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da"
+                    alt="Taj Mahal"
+                >
+
+                <div class="card-content">
+
+                    <h3>Agra</h3>
+
+                    <p>
+                        Visit the famous Taj Mahal and experience
+                        India's rich history.
+                    </p>
+
+                    <p><b>Duration:</b> 3 Days / 2 Nights</p>
+
+                </div>
+
+            </div>
+
+
+            <!-- DESTINATION 2 -->
+            <div class="destination-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1500534623283-312aade485b7"
+                    alt="Mountain Destination"
+                >
+
+                <div class="card-content">
+
+                    <h3>Manali</h3>
+
+                    <p>
+                        Enjoy mountains, valleys and beautiful
+                        natural landscapes.
+                    </p>
+
+                    <p><b>Duration:</b> 5 Days / 4 Nights</p>
+
+                </div>
+
+            </div>
+
+
+            <!-- DESTINATION 3 -->
+            <div class="destination-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1593693397690-362cb9666fc2"
+                    alt="Kerala"
+                >
+
+                <div class="card-content">
+
+                    <h3>Kerala</h3>
+
+                    <p>
+                        Experience peaceful backwaters,
+                        beaches and greenery.
+                    </p>
+
+                    <p><b>Duration:</b> 4 Days / 3 Nights</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ---------- HOLIDAY PACKAGES ---------- -->
+    <section id="packages">
+
+        <div class="section-title">
+
+            <h2>Holiday Packages</h2>
+
+            <p>
+                Choose a package that suits your travel plan.
+            </p>
+
+        </div>
+
+
+        <div class="package-container">
+
+            <!-- PACKAGE 1 -->
+            <div class="package-card">
+
+                <h3>Agra Explorer</h3>
+
+                <p>3 Days / 2 Nights</p>
+
+                <div class="price">₹7,999</div>
+
+                <ul>
+                    <li>Hotel Stay</li>
+                    <li>Breakfast</li>
+                    <li>Taj Mahal Visit</li>
+                    <li>Local Sightseeing</li>
+                </ul>
+
+                <a href="#inquiry" class="btn">
+                    Enquire Now
+                </a>
+
+            </div>
+
+
+            <!-- PACKAGE 2 -->
+            <div class="package-card">
+
+                <h3>Manali Adventure</h3>
+
+                <p>5 Days / 4 Nights</p>
+
+                <div class="price">₹12,999</div>
+
+                <ul>
+                    <li>Hotel Stay</li>
+                    <li>Breakfast</li>
+                    <li>Mountain Sightseeing</li>
+                    <li>Local Transport</li>
+                </ul>
+
+                <a href="#inquiry" class="btn">
+                    Enquire Now
+                </a>
+
+            </div>
+
+
+            <!-- PACKAGE 3 -->
+            <div class="package-card">
+
+                <h3>Kerala Escape</h3>
+
+                <p>4 Days / 3 Nights</p>
+
+                <div class="price">₹10,999</div>
+
+                <ul>
+                    <li>Hotel Stay</li>
+                    <li>Breakfast</li>
+                    <li>Backwater Tour</li>
+                    <li>Beach Visit</li>
+                </ul>
+
+                <a href="#inquiry" class="btn">
+                    Enquire Now
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ---------- ITINERARY ---------- -->
+    <section class="itinerary" id="itinerary">
+
+        <div class="section-title">
+
+            <h2>Sample Itinerary</h2>
+
+            <p>
+                Example itinerary for our Manali Adventure package.
+            </p>
+
+        </div>
+
+
+        <div class="itinerary-container">
+
+            <div class="day">
+
+                <h3>Day 1 - Arrival in Manali</h3>
+
+                <p>
+                    Arrive in Manali, check into the hotel and
+                    explore the nearby market.
+                </p>
+
+            </div>
+
+
+            <div class="day">
+
+                <h3>Day 2 - Local Sightseeing</h3>
+
+                <p>
+                    Visit Hadimba Temple, Manu Temple and
+                    Mall Road.
+                </p>
+
+            </div>
+
+
+            <div class="day">
+
+                <h3>Day 3 - Mountain Adventure</h3>
+
+                <p>
+                    Enjoy beautiful mountain views and
+                    adventure activities.
+                </p>
+
+            </div>
+
+
+            <div class="day">
+
+                <h3>Day 4 - Nature Tour</h3>
+
+                <p>
+                    Explore waterfalls, valleys and
+                    surrounding natural attractions.
+                </p>
+
+            </div>
+
+
+            <div class="day">
+
+                <h3>Day 5 - Departure</h3>
+
+                <p>
+                    Check out from the hotel and return
+                    home with wonderful memories.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ---------- TRAVEL INQUIRY FORM ---------- -->
+    <section id="inquiry">
+
+        <div class="section-title">
+
+            <h2>Travel Inquiry</h2>
+
+            <p>
+                Fill in the form and we will help you plan your trip.
+            </p>
+
+        </div>
+
+
+        <div class="form-container">
+
+            <form>
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="phone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        placeholder="Enter your phone number"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="destination">
+                        Choose Destination
+                    </label>
+
+                    <select id="destination">
+
+                        <option>Agra</option>
+                        <option>Manali</option>
+                        <option>Kerala</option>
+                        <option>Other</option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="date">
+                        Travel Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="date"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="message">
+                        Your Requirements
+                    </label>
+
+                    <textarea
+                        id="message"
+                        placeholder="Tell us about your travel requirements..."
+                    ></textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="submit-btn"
+                >
+                    Submit Inquiry
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- ---------- FOOTER ---------- -->
+    <footer>
+
+        <h3>🌍 WanderWorld Travel Agency</h3>
+
+        <p>
+            Explore • Travel • Discover
+        </p>
+
+        <p>
+            © 2026 WanderWorld. All Rights Reserved.
+        </p>
+
+    </footer>
+
+</body>
+</html>
